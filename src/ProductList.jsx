@@ -8,7 +8,7 @@ function ProductList() {
     const dispatch = useDispatch();
     const [showCart, setShowCart] = useState(false); 
     const [showPlants, setShowPlants] = useState(false); // State to control the visibility of the About Us page
-    const [addedToCart, setAddedToCart] = useState([]); // Cart variable
+    const [addedToCart, setAddedToCart] = useState(0); // Cart variable
 
     const plantsArray = [
         {
@@ -256,11 +256,11 @@ function ProductList() {
 
     const handleAddToCart = (item) => {
         dispatch(addItem(item));
-        // Update in addedToCart list
+        setAddedToCart(a => a + 1);
     };
     
     const itemAmount = () => {
-        return 2; // Change to function
+        return addedToCart;
     };
 
     return (
